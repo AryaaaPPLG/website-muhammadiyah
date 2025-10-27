@@ -1,0 +1,31 @@
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
+import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+
+
+const NotFound = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    console.error("404 Error: User attempted to access non-existent route:", location.pathname);
+  }, [location.pathname]);
+
+  return (
+    <div className="flex min-h-screen items-center justify-center bg-gray-100">
+      <div className="text-center">
+          <DotLottieReact
+      src="https://lottie.host/05ff1d57-d7cc-4b3d-bb01-4570a13b55cd/TvlBPgR3S0.lottie"
+      loop
+      autoplay
+    />
+        <h1 className="mb-4 text-4xl text-black font-bold">404</h1>
+        <p className="mb-4 text-xl text-gray-600">Oops! Page not found</p>
+        <a href="/" className="text-blue-500 underline hover:text-blue-700">
+          Return to Home
+        </a>
+      </div>
+    </div>
+  );
+};
+
+export default NotFound;

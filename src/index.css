@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 220 25% 8%;
+    --foreground: 40 90% 95%;
+
+    --card: 220 20% 12%;
+    --card-foreground: 40 90% 95%;
+
+    --popover: 220 25% 10%;
+    --popover-foreground: 40 90% 95%;
+
+    --primary: 180 75% 45%;
+    --primary-foreground: 220 25% 8%;
+
+    --secondary: 220 18% 18%;
+    --secondary-foreground: 40 90% 95%;
+
+    --muted: 220 18% 20%;
+    --muted-foreground: 40 20% 70%;
+
+    --accent: 45 100% 55%;
+    --accent-foreground: 220 25% 8%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 18% 25%;
+    --input: 220 18% 20%;
+    --ring: 180 75% 45%;
+
+    --radius: 0.75rem;
+
+    /* Museum futuristic theme colors */
+    --museum-glass: 220 20% 15% / 0.6;
+    --museum-glow: 180 100% 50% / 0.3;
+    --museum-gold: 45 100% 55%;
+    --exhibit-bg: 220 22% 14%;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(180 75% 35%), hsl(200 80% 45%));
+    --gradient-accent: linear-gradient(135deg, hsl(45 100% 45%), hsl(35 100% 55%));
+    --gradient-glow: radial-gradient(circle at center, hsl(180 100% 50% / 0.2), transparent 70%);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "kern" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    background: hsl(var(--museum-glass));
+    backdrop-filter: blur(20px);
+    border: 1px solid hsl(var(--border));
+  }
+
+  .glow-effect {
+    box-shadow: 0 0 40px hsl(var(--museum-glow)),
+                0 0 80px hsl(var(--museum-glow));
+  }
+
+  .text-glow {
+    text-shadow: 0 0 20px hsl(var(--primary) / 0.5),
+                 0 0 40px hsl(var(--primary) / 0.3);
+  }
+
+  .exhibit-card {
+    @apply glass-panel rounded-2xl p-8 transition-all duration-500;
+    @apply hover:scale-[1.02] hover:shadow-2xl;
+  }
+
+  .geometric-pattern {
+    background-image: 
+      repeating-linear-gradient(45deg, transparent, transparent 35px, hsl(var(--primary) / 0.03) 35px, hsl(var(--primary) / 0.03) 70px),
+      repeating-linear-gradient(-45deg, transparent, transparent 35px, hsl(var(--accent) / 0.02) 35px, hsl(var(--accent) / 0.02) 70px);
+  }
+}
